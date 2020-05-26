@@ -2,7 +2,7 @@ package com.comm.provider;
 
 import com.alibaba.fastjson.JSON;
 import com.comm.dto.AccessTokenDTO;
-import com.comm.dto.GIthubUser;
+import com.comm.dto.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
@@ -26,28 +26,26 @@ public class GithubProvider {
                 String string = response.body().string();
                 String token = string.split("&")[0].split("=")[1];
                 System.out.println(token);
-                return string;
+                return token;
             } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
     }
-    public GIthubUser getUser(String accessToken){
+    public GithubUser getUser(String accessToken){
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://api.github.com/user?access_token"+accessToken)
+                .url("https://api.github.com/user?access_token="+accessToken)
                 .build();
         try {
             Response response = client.newCall(request).execute();
             String string = response.body().string();
-            GIthubUser githubUser = JSON.parseObject(string, GIthubUser.class);
-            System.out.println("exist");
+            GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
             return githubUser;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("unexisted");
         return null;
     }
 }
