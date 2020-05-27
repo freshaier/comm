@@ -7,6 +7,7 @@
 [github OAuth document](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
 [spring-boot-mybatis](http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)
 [spring](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
+[flyway migration](https://flywaydb.org/getstarted/why)
 ## 工具
 [Git download](https://git-scm.com/)
 [Visual-paradigm](https://www.visual-paradigm.com/cn/)
