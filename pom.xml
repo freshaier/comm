@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.197</version>
+            <version>1.4.196</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -65,10 +65,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
-       <!-- <dependency>
+        <!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-maven-plugin -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-maven-plugin</artifactId>
+            <version>6.4.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
     <build>
@@ -90,7 +97,7 @@
                     <dependency>
                         <groupId>com.h2database</groupId>
                         <artifactId>h2</artifactId>
-                        <version>1.4.197</version>
+                        <version>1.4.196</version>
                     </dependency>
                 </dependencies>
             </plugin>

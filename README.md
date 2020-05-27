@@ -27,4 +27,7 @@ create table USER
 );
 
 ```
+```bash
+mvn flyway:migrate
+```
 
