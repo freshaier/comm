@@ -5,6 +5,8 @@
 [es 网站](https://elasticsearch.cn/)
 [bootstrap 前端网页设计](https://v3.bootcss.com/css/)
 [github OAuth document](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/)
+[spring-boot-mybatis](http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/)
+[spring](https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/htmlsingle/#boot-features-embedded-database-support)
 ## 工具
 [Git download](https://git-scm.com/)
 [Visual-paradigm](https://www.visual-paradigm.com/cn/)
