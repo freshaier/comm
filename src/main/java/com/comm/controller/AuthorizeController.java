@@ -5,6 +5,7 @@ import com.comm.dto.GithubUser;
 import com.comm.mapper.UserMapper;
 import com.comm.model.User;
 import com.comm.provider.GithubProvider;
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @Controller
@@ -31,7 +34,8 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
-                            HttpServletRequest request){
+                            HttpServletRequest request,
+                           HttpServletResponse response){
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id(clientid);
         accessTokenDTO.setClient_secret(client_secret);
@@ -54,12 +58,15 @@ public class AuthorizeController {
             User user = new User();
             user.setAccountID(String.valueOf(githubUser.getId()));
             user.setName(githubUser.getName());
-            user.setToken(UUID.randomUUID().toString());
+            //弄清UUID
+            String token = UUID.randomUUID().toString();
+            user.setToken(token);
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
             userMapper.insert(user);
             //登录成功 写cookie 和session
-            request.getSession().setAttribute("user",githubUser);
+            response.addCookie(new Cookie("token",token));
+            //request.getSession().setAttribute("user",githubUser);
             return "redirect:/";
         }else{
             //登录失败，重新登录
